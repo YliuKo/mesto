@@ -1,0 +1,22 @@
+.element__heart {
+    background: url('../../../images/icon/hurt__vector.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    border: none;
+    margin-right: 15px;
+    box-sizing: border-box;
+}
+
+.element__heart:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.element__heart:active {
+    background: url(../../../images/Union.svg);
+    opacity: 0.9;
+    cursor: pointer;
+}
