@@ -10,14 +10,14 @@ let profileTitle = document.querySelector('.profile__name');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
 const openPopup = function() {
-    popupElement.classList.add('popup__open');
+    popupElement.classList.add('popup_open');
     nameInput.value = profileTitle.textContent;
     descriptionInput.value = profileSubtitle.textContent;
 };
 buttonOpenPopup.addEventListener('click', openPopup);
 
 const closePopup = function () {
-    popupElement.classList.remove('popup__open');
+    popupElement.classList.remove('popup_open');
 }
 buttonClosePopup.addEventListener('click', closePopup);
 
