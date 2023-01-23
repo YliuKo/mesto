@@ -13,4 +13,4 @@
 
 #### Чек лист:https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-4.pdf
 
-##### Ссылка на проект:https://github.com/YliuKo
+##### Ссылка на проект:https://yliuko.github.io/mesto/
