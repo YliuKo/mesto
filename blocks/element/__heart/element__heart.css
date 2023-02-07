@@ -1,5 +1,5 @@
 .element__heart {
-    background: url('../../../images/icon/hurt__vector.svg');
+    background: url('../../../images/icon/heart__vector.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 22px;
@@ -15,8 +15,3 @@
     cursor: pointer;
 }
 
-.element__heart:active {
-    background: url(../../../images/Union.svg);
-    opacity: 0.9;
-    cursor: pointer;
-}
