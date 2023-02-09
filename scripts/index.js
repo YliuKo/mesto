@@ -3,34 +3,34 @@ const popupProfile = document.querySelector('.popup_type_edit')
 const addPopup = document.querySelector('.popup_type_add');
 const popupFullscreen = document.querySelector('.popup_type_photo'); 
 const popupConteiner = popupElement.querySelector('.popup__container');
-const popupForm = popupElement.querySelector('.popup__form');
-const addPopupForm = addPopup.querySelector('.popup__form_type_add'); //завела модификатор для обращения к отдельным поапапм, формам или еще чему-то повторяющемуся 
-const buttonClosePopup = popupProfile.querySelector('.popup__close-button'); //
-const buttonOpenPopup = document.querySelector('.profile__edit-button');
+const formEditProfile = popupElement.querySelector('.popup__form');
+const formAddCard = addPopup.querySelector('.popup__form_type_add'); //завела модификатор для обращения к отдельным поапапм, формам или еще чему-то повторяющемуся 
+const buttonClosePopupEditProfile = popupProfile.querySelector('.popup__close-button'); //
+const buttonOpenPopupEditProfile = document.querySelector('.profile__edit-button');
 const submitAddPopup = popupElement.querySelector('.popup__save-button');
 const buttonHeart = document.querySelectorAll('.element__heart');
 const buttonAdd = document.querySelector('.profile__add-button');
-const popupAddButtonClouse = addPopup.querySelector('.popup__close-button'); //
+const buttonCloseAddCardPopup = addPopup.querySelector('.popup__close-button'); //
 const popupAddButton = addPopup.querySelector('.popup__add-button');
-const buttonClose = popupFullscreen.querySelector('.popup__close-button'); 
+const buttonClosePopupImage = popupFullscreen.querySelector('.popup__close-button'); 
 const nameInput = popupElement.querySelector('.popup__input_data-name');
 const descriptionInput = popupElement.querySelector('.popup__input_data-description');
 const placeInput = addPopup.querySelector('.popup__input_data-title'); //классы для инпутов
 const imageInput = addPopup.querySelector('.popup__input_data-photo'); //--//--
 const title = document.querySelector('.profile__name');
 const subtitle = document.querySelector('.profile__subtitle'); 
-const moreCard = document.querySelector('.elements');
+const cardsList = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template').content;
 const fullscreenPicture = popupFullscreen.querySelector('.popup__image-full-screen');
 const fullscreenName = popupFullscreen.querySelector('.popup__title-full-screen');
 const popupList = Array.from(document.querySelectorAll('.popup'))
 
-function openPopupAll(popup) {
+function openPopup(popup) {
   popup.classList.add('popup_open');
 }
 
-function closePopup(popupClose) {
-  popupClose.classList.remove('popup_open');
+function closePopup(popup) {
+  popup.classList.remove('popup_open');
 }
 
 function createCard(item) {
@@ -47,8 +47,8 @@ function createCard(item) {
     buttonHeart.classList.toggle('element__heart_active');
   });
 
-  const buttonDeleteHeart = oneCard.querySelector('.element__heart-delete'); //удаление сердца
-  buttonDeleteHeart.addEventListener('click', function (event) {
+  const buttonDeleteCard = oneCard.querySelector('.element__heart-delete'); //удаление сердца
+  buttonDeleteCard.addEventListener('click', function (event) {
     event.target.closest('.element').remove();
   })
 
@@ -56,22 +56,22 @@ function createCard(item) {
     fullscreenPicture.src = item.link;
     fullscreenPicture.alt = item.name;
     fullscreenName.textContent = item.name;
-    openPopupAll(popupFullscreen);
+    openPopup(popupFullscreen);
   });
   return oneCard;
 };
 
-buttonClose.addEventListener('click', (event) => { //кнопка закрытия
+buttonClosePopupImage.addEventListener('click', (event) => { //кнопка закрытия
   closePopup(popupFullscreen);
 });
 
-buttonOpenPopup.addEventListener('click', (event) => {
-  openPopupAll(popupProfile);
+buttonOpenPopupEditProfile.addEventListener('click', (event) => {
+  openPopup(popupProfile);
   nameInput.value = title.textContent; // при открытии поапа поля формы заполнятся данными из профиля
   descriptionInput.value = subtitle.textContent;
 });
 
-buttonClosePopup.addEventListener('click', (event) => {
+buttonClosePopupEditProfile.addEventListener('click', (event) => {
   closePopup(popupProfile)
 });
 
@@ -81,32 +81,32 @@ function addTextSubtitle(evt) {
   subtitle.textContent = descriptionInput.value;
   closePopup(popupProfile);
 }
-popupForm.addEventListener('submit', addTextSubtitle);
+formEditProfile.addEventListener('submit', addTextSubtitle);
 
 buttonAdd.addEventListener('click', (event) => {
-  openPopupAll(addPopup);
+  openPopup(addPopup);
 });
 
-popupAddButtonClouse.addEventListener('click', (event) => {
+buttonCloseAddCardPopup.addEventListener('click', (event) => {
   closePopup(addPopup);
-  addPopupForm.reset();
+  formAddCard.reset();
 });
 
 function renderCards() {
   initialCards.forEach(newItem => {
     const cardHtml = createCard(newItem);
-    moreCard.prepend(cardHtml);
+    cardsList.prepend(cardHtml);
   })
 }
 renderCards();
 
-addPopupForm.addEventListener('submit', function (evt) {
+formAddCard.addEventListener('submit', function (evt) {
   evt.preventDefault();
   const newCard = {
     name: placeInput.value,
     link: imageInput.value
   }
-  moreCard.prepend(createCard(newCard));
+  cardsList.prepend(createCard(newCard));
   closePopup(addPopup); 
-  addPopupForm.reset();
+  formAddCard.reset();
 });
