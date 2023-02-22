@@ -39,5 +39,9 @@
 @import url('../blocks/popup/__save-button/popup__save-button.css');
 @import url('../blocks/popup/_open/popup_open.css');
 @import url('../blocks/popup/__form/popup__form.css');
+@import url('../blocks/popup/__input/_error/popup__input_error.css');
+@import url('../blocks/popup/__text-error/popup__text-error.css');
+@import url('../blocks/popup/__text-error/_visible/popup__text-error_visible.css');
+@import url('../blocks/popup/__save-button/_disabled/popup__save-button_disabled.css');
 @import url('../blocks/page/__footer/page__footer.css');
 @import url('../blocks/footer/__copyright/foooter__copyright.css');

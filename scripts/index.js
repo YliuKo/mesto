@@ -1,3 +1,15 @@
+const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_disabled',
+    inputErrorClass: 'popup__input_error',
+    errorClass: 'popup__text-error_visible'
+};
+
+const inputs = document.querySelectorAll(validationConfig.inputSelector);
+const errors = document.querySelectorAll('.popup__text-error');
+
 const popupElement = document.querySelector('.popup');
 const popupProfile = document.querySelector('.popup_type_edit') 
 const addPopup = document.querySelector('.popup_type_add');
@@ -23,17 +35,41 @@ const cardsList = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template').content;
 const fullscreenPicture = popupFullscreen.querySelector('.popup__image-full-screen');
 const fullscreenName = popupFullscreen.querySelector('.popup__title-full-screen');
-const popupList = Array.from(document.querySelectorAll('.popup'))
+const popupList = Array.from(document.querySelectorAll('.popup')) //поиск попап
 
 function openPopup(popup) {
   popup.classList.add('popup_open');
 }
 
 function closePopup(popup) {
+  resetInputsErrors();
   popup.classList.remove('popup_open');
 }
 
-function createCard(item) {
+popupList.forEach((popup) => { //закрытие по оверлей
+    popup.addEventListener('mouseup', (evt) => { 
+      const targetClassList = evt.target.classList; 
+      if (targetClassList.contains('popup') || targetClassList.contains('popup__close-button')) { 
+        closePopup(popup); 
+        formAddCard.reset();
+      }
+    })
+  })
+
+  function openPopup(popup) {
+  popup.classList.add('popup_open');
+  document.addEventListener('keydown', closePopupEsc);
+ }
+
+function closePopupEsc(event) { // закрыте по Esc
+    if (event.key === 'Escape') {
+      const openPopup = document.querySelector('.popup_open');
+      closePopup(openPopup);
+      formAddCard.reset();
+    }
+  }
+
+ function createCard(item) { //создание карточки
   const oneCard = cardTemplate.cloneNode(true);
   const cardText = oneCard.querySelector('.element__title'); //заголовка текстконтент
   cardText.textContent = item.name;
@@ -110,3 +146,16 @@ formAddCard.addEventListener('submit', function (evt) {
   closePopup(addPopup); 
   formAddCard.reset();
 });
+
+function resetInputsErrors() {
+    placeInput.value = '';
+    imageInput.value = '';
+    inputs.forEach((input) => {
+        input.classList.remove(validationConfig.inputErrorClass);
+    })
+    errors.forEach((error) => {
+        error.classList.remove(validationConfig.errorClass);
+    })
+}
+
+enableValidation(validationConfig);
