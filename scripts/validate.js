@@ -39,6 +39,12 @@ function setEventListeners(formElement, config) {
     const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     const submitButton = formElement.querySelector(config.submitButtonSelector);
 
+    formElement.addEventListener('reset', () => {   // собыите `reset` происходит когда вызывается `reset` у формы
+        setTimeout(() => {                          // добавим таймаут, чтобы `toggleButtonState` вызвался уже после сохранения формы
+            toggleButtonState(inputList, submitButton, config), 0
+        })
+    })
+
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
             checkInputValidity(formElement, inputElement, config);
