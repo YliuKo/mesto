@@ -1,6 +1,6 @@
 import Card from "./Card.js";
-import ValidateForm from "./FormValidator.js"
 import FormValidator from "./FormValidator.js";
+import initialCards from './constants.js';
 
 const validationConfig = { 
     formSelector: '.popup__form',
@@ -31,7 +31,7 @@ const placeInput = addPopup.querySelector('.popup__input_data-title'); //кла�
 const imageInput = addPopup.querySelector('.popup__input_data-photo'); //--//--
 const title = document.querySelector('.profile__name');
 const subtitle = document.querySelector('.profile__subtitle');
-const cardsList = document.querySelector('.elements');
+const cardsElement = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template').content;
 const fullscreenPicture = popupFullscreen.querySelector('.popup__image-full-screen');
 const fullscreenName = popupFullscreen.querySelector('.popup__title-full-screen');
@@ -56,19 +56,11 @@ function openPopup(popup) {
     document.addEventListener('keydown', closePopupEsc);
 }
 
-function resetPopup(popup) {
-    const popupForm = popup.querySelector('.popup__form');
-    popupForm.reset();
-
-    const inputs = popup.querySelectorAll(validationConfig.inputSelector);
-    const errors = popup.querySelectorAll('.popup__text-error');
-
-    inputs.forEach((input) => {
-        input.classList.remove(validationConfig.inputErrorClass);
-    })
-    errors.forEach((error) => {
-        error.classList.remove(validationConfig.errorClass);
-    })
+function handleOpenPopup(name, link) {
+    fullscreenPicture.alt = name
+    fullscreenPicture.src = link;
+    fullscreenName.textContent = name;
+    openPopup(this.popupTypeImage)
 }
 
 function closePopupEsc(event) { // закрыте по Esc
@@ -91,7 +83,7 @@ function createCard(item) { //создание карточки
 }
 
 buttonOpenPopupEditProfile.addEventListener('click', (event) => {
-    resetPopup(popupProfile);
+    popupValidateCard.resetValidation();
     openPopup(popupProfile);
     nameInput.value = title.textContent; // при открытии поапа поля формы заполнятся данными из профиля
     descriptionInput.value = subtitle.textContent;
@@ -109,14 +101,14 @@ function addTextSubtitle(evt) {
 formEditProfile.addEventListener('submit', addTextSubtitle);
 
 buttonAdd.addEventListener('click', (event) => {
-    disableSubmitForPopup(addPopup);
-    resetPopup(addPopup);
+    popupValidateCard.disableSubmitForPopup(addPopup);
+    popupValidateCard.resetValidation();
     openPopup(addPopup);
 });
 function renderCards() {
     initialCards.forEach(newItem => {
         const cardHtml = createCard(newItem);
-        cardsList.prepend(cardHtml);
+        cardsElement.prepend(cardHtml);
     })
 }
 renderCards();
@@ -127,18 +119,14 @@ formAddCard.addEventListener('submit', function (evt) {
         name: placeInput.value,
         link: imageInput.value
     }
-    cardsList.prepend(createCard(newCard));
+    cardsElement.prepend(createCard(newCard));
+    evt.target.reset();
     closePopup(addPopup);
 });
-
-function disableSubmitForPopup(popup) {
-    const submitButton = popup.querySelector(validationConfig.submitButtonSelector);
-    submitButton.classList.add(validationConfig.inactiveButtonClass);
-    submitButton.disabled = true;
-}
 
 // enableValidation(validationConfig);
 const popupValidateCard = new FormValidator(popupProfile, validationConfig)
 popupValidateCard.enableValidation();
 const addValidateCard = new FormValidator(addPopup, validationConfig)
 addValidateCard.enableValidation();
+const element = new Card(createCard, cardTemplate, handleOpenPopup)

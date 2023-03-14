@@ -1,15 +1,15 @@
 export default class Card {
-    constructor(card, selector, openPopup) {
+    constructor(card, selector, handleOpenPopup) {
         this._name = card.name;
         this._link = card.link;
         this.selector = selector;
-        this._openPopup = openPopup;
         this.likeCard = this.likeCard.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
+        this._handleOpenPopup = handleOpenPopup;
     }
 
     getCard() {
-        return document.querySelector(this.selector).content.cloneNode(true);
+        return document.querySelector(this.selector).content.querySelector('.element').cloneNode(true);
     }
 
     createCard() { //создание карточки
@@ -33,23 +33,31 @@ export default class Card {
     }
 
     deleteCard() {
-        this.buttonDeleteCard.closest('.element').remove();
+        this.oneCard.remove();
+        this.oneCard = null;
+    }
+
+    getFullScreenImageTitle() {
+        return this.fullScreenImageTitle = document.querySelector(".popup__title-full-screen")
+    }
+
+    getPopupTypeImage() {
+        return this.popupTypeImage = document.querySelector(".popup_type_photo")
+    }
+
+    getFullScreenImage() {
+        return this.fullScreenImage = document.querySelector(".popup__image-full-screen")
+
     }
 
     eventListeners() {
         this.buttonHeart.addEventListener('click', this.likeCard);
         this.buttonDeleteCard.addEventListener('click', this.deleteCard);
         this.cardPath.addEventListener('click', () => {
-            this.popupTypeImage = document.querySelector(".popup_type_photo")
-            this.fullScreenImage = document.querySelector(".popup__image-full-screen")
-            this.fullScreenImageTitle = document.querySelector(".popup__title-full-screen")
-
-            this._openPopup(this.popupTypeImage);
-            this.fullScreenImage.alt = this._name
-            this.fullScreenImage.src = this._link;
-            this.fullScreenImageTitle.textContent = this._name;
+            this.getPopupTypeImage();
+            this.getFullScreenImage();
+            this.getFullScreenImageTitle();
+            this._handleOpenPopup(this._name, this._link);
         })
     }
 }
-
-

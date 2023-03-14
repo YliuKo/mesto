@@ -23,25 +23,4 @@ const initialCards = [{
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
-const errorMessages = {
-  title: {
-    tooShort: "Минимальная длина поля - 2 символа",
-    tooLong: "Максимальная длина поля - 30 символов",
-    valueMissing: "Пожалуйста, заполните это поле"
-  },
-  photo: {
-    typeMismatch: "Пожалуйста, введите ссылку",
-    valueMissing: "Пожалуйста, заполните это поле"
-  },
-  username: {
-    tooShort: "Минимальная длина поля - 2 символа",
-    tooLong: "Максимальная длина поля - 40 символов",
-    valueMissing: "Пожалуйста, заполните это поле"
-  },
-  activity: {
-    tooShort: "Минимальная длина поля - 2 символа",
-    tooLong: "Максимальная длина поля - 200 символов",
-    valueMissing: "Пожалуйста, заполните это поле"
-  }
-};
+export default initialCards
