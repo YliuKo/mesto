@@ -48,10 +48,6 @@ export default class FormValidator {
         this.inputList = Array.from(this.formElement.querySelectorAll(this.inputSelector));
         this.submitButton = this.formElement.querySelector(this.submitButtonSelector);
 
-        this.formElement.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-        });
-
         this.inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this.checkInputValidity(inputElement);
@@ -72,21 +68,6 @@ export default class FormValidator {
             this.hideInputError(inputElement)
         });
         this.toggleButtonState();
-    }
-
-    disableSubmitForPopup(popup) {
-        const submitButton = popup.querySelector(this.submitButtonSelector);
-        submitButton.classList.add(this.inactiveButtonClass);
-        submitButton.disabled = true;
-    }
-
-    getInvalidityReason(validity) {
-        for (let prop in validity) {
-            if (validity[prop]) {
-                return prop;
-            }
-        }
-        return '';
     }
 
     enableValidation() {

@@ -37,26 +37,10 @@ export default class Card {
         this.oneCard = null;
     }
 
-    getFullScreenImageTitle() {
-        return this.fullScreenImageTitle = document.querySelector(".popup__title-full-screen")
-    }
-
-    getPopupTypeImage() {
-        return this.popupTypeImage = document.querySelector(".popup_type_photo")
-    }
-
-    getFullScreenImage() {
-        return this.fullScreenImage = document.querySelector(".popup__image-full-screen")
-
-    }
-
     eventListeners() {
         this.buttonHeart.addEventListener('click', this.likeCard);
         this.buttonDeleteCard.addEventListener('click', this.deleteCard);
         this.cardPath.addEventListener('click', () => {
-            this.getPopupTypeImage();
-            this.getFullScreenImage();
-            this.getFullScreenImageTitle();
             this._handleOpenPopup(this._name, this._link);
         })
     }

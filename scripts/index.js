@@ -56,11 +56,11 @@ function openPopup(popup) {
     document.addEventListener('keydown', closePopupEsc);
 }
 
-function handleOpenPopup(name, link) {
+function getCardData(name, link) {
     fullscreenPicture.alt = name
     fullscreenPicture.src = link;
     fullscreenName.textContent = name;
-    openPopup(this.popupTypeImage)
+    openPopup(popupFullscreen)
 }
 
 function closePopupEsc(event) { // закрыте по Esc
@@ -70,20 +70,12 @@ function closePopupEsc(event) { // закрыте по Esc
     }
 }
 
-function getCardData(name, link) {
-    fullscreenPicture.alt = name;
-    fullscreenPicture.src = link;
-    fullscreenName.textContent = name;
-    openPopup(popupFullscreen);
-}
-
 function createCard(item) { //создание карточки
     const newCard = new Card(item, '.card-template', getCardData).createCard()
     return newCard;
 }
 
 buttonOpenPopupEditProfile.addEventListener('click', (event) => {
-    popupValidateCard.resetValidation();
     openPopup(popupProfile);
     nameInput.value = title.textContent; // при открытии поапа поля формы заполнятся данными из профиля
     descriptionInput.value = subtitle.textContent;
@@ -101,7 +93,6 @@ function addTextSubtitle(evt) {
 formEditProfile.addEventListener('submit', addTextSubtitle);
 
 buttonAdd.addEventListener('click', (event) => {
-    popupValidateCard.disableSubmitForPopup(addPopup);
     popupValidateCard.resetValidation();
     openPopup(addPopup);
 });
@@ -129,4 +120,3 @@ const popupValidateCard = new FormValidator(popupProfile, validationConfig)
 popupValidateCard.enableValidation();
 const addValidateCard = new FormValidator(addPopup, validationConfig)
 addValidateCard.enableValidation();
-const element = new Card(createCard, cardTemplate, handleOpenPopup)
