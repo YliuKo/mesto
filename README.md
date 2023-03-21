@@ -19,12 +19,14 @@
   - произведен рефакторинг кода.
   - Созданы классы Card и FormValidator.
   - JavaScript разбит на модули.
+  - Настроена сборка Вебпаком и установлены все необходимые для этого инструменты.
 
 ### [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 #### Чек лист:https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-4.pdf
               https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-5.pdf
               https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-6.pdf
-              https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-7.pdf    
+              https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-7.pdf 
+              https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-8.pdf
 
 ##### Ссылка на проект:https://yliuko.github.io/mesto/
