@@ -1,11 +1,11 @@
 export default class Card {
-    constructor(card, selector, handleOpenPopup) {
+    constructor(card, selector, handleCardClick) {
         this._name = card.name;
         this._link = card.link;
         this.selector = selector;
         this.likeCard = this.likeCard.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
-        this._handleOpenPopup = handleOpenPopup;
+        this._handleOpenPopup = handleCardClick;
     }
 
     getCard() {
@@ -42,6 +42,7 @@ export default class Card {
         this.buttonDeleteCard.addEventListener('click', this.deleteCard);
         this.cardPath.addEventListener('click', () => {
             this._handleOpenPopup(this._name, this._link);
+            console.log("card");
         })
     }
 }
