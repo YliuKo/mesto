@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './scripts/index.js',
+    entry: './pages/index.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
@@ -13,7 +13,7 @@ module.exports = {
     devServer: {
         static: path.resolve(__dirname, './dist'),
         compress: true,
-        port: 8080,
+        port: 8000,
     
         open: true,
       },

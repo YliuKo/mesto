@@ -6,6 +6,7 @@ export default class Section {
     }
 
     render() {
+        console.log("Render!");
         this.items.forEach(newItem => {
             this.selector.prepend(this.renderer(newItem));
         })
@@ -13,6 +14,6 @@ export default class Section {
 
     addItem(element) {
         // TEST IT
-        this.selector.prepend(element);
+        this.selector.prepend(this.renderer(element))
     }
 }

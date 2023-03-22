@@ -44,6 +44,7 @@ export default class FormValidator {
             this.submitButton.disabled = false;
         }
     }
+    
     setEventListeners() {
         this.inputList = Array.from(this.formElement.querySelectorAll(this.inputSelector));
         this.submitButton = this.formElement.querySelector(this.submitButtonSelector);

@@ -1,10 +1,10 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import initialCards from './constants.js';
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import UserInfo from "./UserInfo.js";
-import Section from "./Section.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import initialCards from '../utils/constants.js';
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
+import Section from "../components/Section.js";
 import '../pages/index.css'
 
 const validationConfig = { 
@@ -19,31 +19,20 @@ const validationConfig = {
 const popupProfile = document.querySelector('.popup_type_edit')
 const popupAdd = document.querySelector('.popup_type_add');
 const popupFullscreen = document.querySelector('.popup_type_photo');
-const popupConteiner = popupProfile.querySelector('.popup__container');
-const formEditProfile = popupProfile.querySelector('.popup__form');
-const formAddCard = popupAdd.querySelector('.popup__form_type_add'); //завела модификатор для обращения к отдельным поапапм, формам или еще чему-то повторяющемуся 
-const buttonClosePopupEditProfile = popupProfile.querySelector('.popup__close-button'); //
 const buttonOpenPopupEditProfile = document.querySelector('.profile__edit-button');
-const submitAddPopup = popupProfile.querySelector('.popup__save-button');
-const buttonHeart = document.querySelectorAll('.element__heart');
 const buttonAdd = document.querySelector('.profile__add-button');
-const buttonCloseAddCardPopup = popupAdd.querySelector('.popup__close-button'); //
-const popupAddButton = popupAdd.querySelector('.popup__add-button');
-const buttonClosePopupImage = popupFullscreen.querySelector('.popup__close-button');
 const nameInput = popupProfile.querySelector('.popup__input_data-name');
 const descriptionInput = popupProfile.querySelector('.popup__input_data-description');
-const placeInput = popupAdd.querySelector('.popup__input_data-title'); //классы для инпутов
-const imageInput = popupAdd.querySelector('.popup__input_data-photo'); //--//--
 const title = document.querySelector('.profile__name');
 const subtitle = document.querySelector('.profile__subtitle');
 const cardsElement = document.querySelector('.elements');
-const cardTemplate = document.querySelector('.card-template').content;
 const fullscreenPicture = popupFullscreen.querySelector('.popup__image-full-screen');
 const fullscreenName = popupFullscreen.querySelector('.popup__title-full-screen');
-const popupList = Array.from(document.querySelectorAll('.popup')) //поиск попап
 
 
 function createCard(item) { //создание карточки
+    console.trace()
+    console.log(item)
     const newCard = new Card(item, '.card-template', getCardData).createCard()
     return newCard;
 }
@@ -92,9 +81,9 @@ function addCard(evt, dict) {
         name: dict.get('input-title'),
         link: dict.get('input-photo'),
     }
-    cardsElement.prepend(createCard(newCard));
+    section.addItem(newCard);
     evt.target.reset();
-    addPopup.close();   
+    addValidateCard.resetValidation();
 }
 
 
