@@ -8,7 +8,7 @@ export default class Section {
     render() {
         console.log("Render!");
         this.items.forEach(newItem => {
-            this.selector.prepend(this.renderer(newItem));
+            this.selector.append(this.renderer(newItem));
         })
     }
 

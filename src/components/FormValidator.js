@@ -55,14 +55,7 @@ export default class FormValidator {
                 this.toggleButtonState();
             })
         })
-    }
-
-    applyValidation(config) {
-        const formList = Array.from(document.querySelector(this.formSelector));
-        formList.forEach((formElement) => {
-            this.setEventListeners(formElement, config)
-        })
-    }
+    }    
 
     resetValidation() {
         this.inputList.forEach((inputElement) => {
