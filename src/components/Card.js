@@ -1,6 +1,6 @@
 export default class Card {
     constructor(card, selector, handleCardClick) {
-        console.log("Create card! " + card.name + " " + card.link)
+        console.log("Create card! " + card.name + " " + card.link);
         this._name = card.name;
         this._link = card.link;
         this.selector = selector;
@@ -15,10 +15,10 @@ export default class Card {
 
     createCard() { //создание карточки
         this.oneCard = this.getCard();
-        this.cardPath = this.oneCard.querySelector(".element__image")
-        this.cardText = this.oneCard.querySelector(".element__title")
-        this.buttonDeleteCard = this.oneCard.querySelector(".element__heart-delete")
-        this.buttonHeart = this.oneCard.querySelector(".element__heart")
+        this.cardPath = this.oneCard.querySelector(".element__image");
+        this.cardText = this.oneCard.querySelector(".element__title");
+        this.buttonDeleteCard = this.oneCard.querySelector(".element__heart-delete");
+        this.buttonHeart = this.oneCard.querySelector(".element__heart");
 
         this.cardPath.alt = this._name;
         this.cardPath.src = this._link;
@@ -27,7 +27,7 @@ export default class Card {
         this.eventListeners();
 
         return this.oneCard;
-    };
+    }
 
     likeCard() {
         this.buttonHeart.classList.toggle('element__heart_active');
@@ -44,6 +44,6 @@ export default class Card {
         this.cardPath.addEventListener('click', () => {
             this._handleOpenPopup(this._name, this._link);
             console.log("card");
-        })
+        });
     }
 }
