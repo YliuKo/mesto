@@ -1,17 +1,15 @@
 .element__heart {
-    background: url('../../../images/icon/heart__vector.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 22px;
-    height: 19px;
-    padding: 0;
-    border: none;
-    margin-right: 15px;
-    box-sizing: border-box;
+  background: url("../../../images/icon/heart__vector.svg");
+  width: 22px;
+  height: 19px;
+  border: none;
+  outline: none;
+  background-color: #ffffff;
+  padding: 0;
+  margin: 5px 5px 1px 0;
 }
 
 .element__heart:hover {
-    opacity: 0.5;
-    cursor: pointer;
+  opacity: 0.5;
+  cursor: pointer;
 }
-

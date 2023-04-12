@@ -1,22 +1,25 @@
 export default class UserInfo {
-  constructor(nameElement, descriptionElement) {
+  constructor(nameElement, descriptionElement, avatarElement) {
     this.nameElement = nameElement;
     this.descriptionElement = descriptionElement;
-    this.nameElement.textContent = "Name";
-    this.descriptionElement.textContent = "Description";
+    this._avatar = avatarElement;
   }
 
   getUserInfo() {
-    const userInfo = {
-      "input-name": this.nameElement.textContent,
-      "input-description": this.descriptionElement.textContent,
+    return {
+      userName: this.nameElement.textContent,
+      aboutUser: this.descriptionElement.textContent,
     };
-
-    return userInfo;
   }
 
-  setUserInfo(name, description) {
-    this.nameElement.textContent = name;
-    this.descriptionElement.textContent = description;
+  setUserInfo(data) {
+    this.nameElement.textContent = data.name ? data.name : "";
+    this.descriptionElement.textContent = data.about ? data.about : "";
+    this._avatar.src = data.avatar ? data.avatar : "";
+    this._userId = data._id;
+  }
+
+  getUserId() {
+    return this._userId;
   }
 }

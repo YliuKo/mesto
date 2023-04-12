@@ -37,6 +37,7 @@ const validationConfig = {
 
 const popupProfile = document.querySelector(".popup_type_edit");
 const popupAdd = document.querySelector(".popup_type_add");
+const popupAvatar = document.querySelector(".popup_type_main-foto");
 const popupFullscreen = document.querySelector(".popup_type_photo");
 const buttonOpenPopupEditProfile = document.querySelector(
   ".profile__edit-button"
@@ -49,16 +50,32 @@ const descriptionInput = popupProfile.querySelector(
 const title = document.querySelector(".profile__name");
 const subtitle = document.querySelector(".profile__subtitle");
 const cardsElement = document.querySelector(".elements");
+const popupDelete = document.querySelector(".popup_type_delete");
 const fullscreenPicture = popupFullscreen.querySelector(
   ".popup__image-full-screen"
 );
 const fullscreenName = popupFullscreen.querySelector(
   ".popup__title-full-screen"
 );
+const buttonAvatar = document.querySelector(".profile__overlay");
+const image = document.querySelector(".profile__icon");
+
+const cardConfig = {
+  titleSelector: ".element__title",
+  imgSelector: ".element__image",
+  btnLikeSelector: ".element__heart",
+  btnActiveSelector: ".element__heart_active",
+  btnDeleteSelector: ".element__heart-delete",
+};
 
 export {
   validationConfig,
+  popupDelete,
+  cardConfig,
+  buttonAvatar,
+  image,
   popupProfile,
+  popupAvatar,
   popupAdd,
   buttonOpenPopupEditProfile,
   buttonAdd,
