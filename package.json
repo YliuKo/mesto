@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "npx webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack serve --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
-  "author": "migran4ik",
+  "author": "YliuKo",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.3",
@@ -16,6 +18,7 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "cssnano": "^5.1.15",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.5",
     "postcss-loader": "^7.1.0",
@@ -25,5 +28,13 @@
   },
   "dependencies": {
     "core-js": "^3.29.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YliuKo/mesto.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YliuKo/mesto/issues"
+  },
+  "homepage": "https://github.com/YliuKo/mesto#readme"
 }
