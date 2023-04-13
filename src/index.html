@@ -18,7 +18,7 @@
       <section class="profile">
         <div class="profile__place">
           <div class="profile__overlay">
-            <img class="profile__icon" alt="иконка пользователя" src="icon" />
+            <img class="profile__icon" alt="иконка пользователя" src="" />
           </div>
           <div class="profile__info">
             <div class="profile__first-line">
@@ -64,7 +64,7 @@
           />
           <span class="popup__text-error activity-error"> </span>
           <button
-            class="popup__save-button popup__save-button_disabled form__submit"
+            class="popup__save-button popup__save-button_disabled"
             aria-label="сохранить"
             type="submit"
           >
@@ -108,7 +108,7 @@
           />
           <span class="popup__text-error photo-error"> </span>
           <button
-            class="popup__save-button popup__save-button_disabled form__submit"
+            class="popup__save-button popup__save-button_disabled"
             aria-label="сохранить"
             type="submit"
           >
@@ -145,16 +145,12 @@
         <h2 class="popup__title">Вы уверены?</h2>
         <form
           id="formDelete"
-          class="popup__form form_type_delete"
+          class="popup__form"
           name="deleteForm"
           method="POST"
           novalidate
         >
-          <button
-            class="popup__save-button form__submit"
-            type="submit"
-            aria-label="Да"
-          >
+          <button class="popup__save-button" type="submit" aria-label="Да">
             Да
           </button>
         </form>
@@ -171,14 +167,14 @@
         <h2 class="popup__title">Обновить аватар</h2>
         <form
           id="formMainFoto"
-          class="popup__form form_type_main-foto"
+          class="popup__form"
           name="mainFotoForm"
           method="POST"
           novalidate
         >
           <input
-            class="popup__input form__input_type_link-mainFoto"
-            id="main_photo"
+            class="popup__input"
+            id="photo"
             name="avatar"
             type="url"
             placeholder="Фото профиля"
@@ -187,7 +183,7 @@
           />
           <span class="popup__text-error photo-error"></span>
           <button
-            class="popup__save-button form__submit"
+            class="popup__save-button"
             type="submit"
             aria-label="Сохранить"
           >

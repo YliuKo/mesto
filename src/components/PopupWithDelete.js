@@ -4,7 +4,7 @@ export class PopupWithDelete extends Popup {
   constructor(popup, deleteCardApi) {
     super(popup);
     this._deleteCardApi = deleteCardApi;
-    this._form = this._popup.querySelector(".form_type_delete");
+    this._form = this._popup.querySelector("form");
   }
 
   setData(data, deleteCard) {
